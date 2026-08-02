@@ -1,0 +1,102 @@
+const enCheck = document.getElementById("en");
+const ruCheck = document.getElementById("ru");
+
+const btn = document.getElementById("telegraph");
+const text = document.getElementById("text");
+const curSym = document.getElementById("curSym");
+const timeOfLongSig = document.getElementById("timeOfLongSig");
+const timeBetweenWords = document.getElementById("timeBetweenWords");
+
+
+let lang = "en";
+
+enCheck.checked = true;
+
+enCheck.onchange = () => {
+    if (enCheck.checked) {
+        lang = "en";
+        ruCheck.checked = false;
+    }
+};
+
+ruCheck.onchange = () => {
+    if (ruCheck.checked) {
+        lang = "ru";
+        enCheck.checked = false;
+    }
+};
+
+const RU={
+".-":"А","-...":"Б",".--":"В","--.":"Г","-..":"Д",".":"Е","...-":"Ж","--..":"З","..":"И",
+".---":"Й","-.-":"К",".-..":"Л","--":"М","-.":"Н","---":"О",".--.":"П",".-.":"Р","...":"С",
+"-":"Т","..-":"У","..-.":"Ф","....":"Х","-.-.":"Ц","---.":"Ч","----":"Ш","--.-":"Щ",
+"-.--":"Ы","-..-":"Ь","..-..":"Э","..--":"Ю",".-.-":"Я"
+};
+
+const EN={
+".-":"A","-...":"B","-.-.":"C","-..":"D",".":"E","..-.":"F","--.":"G","....":"H","..":"I",
+".---":"J","-.-":"K",".-..":"L","--":"M","-.":"N","---":"O",".--.":"P","--.-":"Q",".-.":"R",
+"...":"S","-":"T","..-":"U","...-":"V",".--":"W","-..-":"X","-.--":"Y","--..":"Z"
+};
+
+let pressTime = 0;
+let currentCode = "";
+let resultText = "";
+
+let letterTimer;
+let spaceTimer;
+
+function press() {
+    pressTime = Date.now();
+    clearTimeout(letterTimer);
+    clearTimeout(spaceTimer); // ← обязательно
+}
+
+function release() {
+    const duration = Date.now() - pressTime;
+
+    // Определяем точку или тире
+    currentCode += duration < Number(timeOfLongSig.value) ? "." : "-";
+    curSym.textContent = currentCode;
+
+    // Ждем окончания буквы
+    letterTimer = setTimeout(() => {
+        
+        const alphabet = lang === "en" ? EN : RU;
+        resultText += alphabet[currentCode] || "?";
+
+        text.textContent = resultText;
+        currentCode = "";
+        curSym.textContent = "";
+
+        clearTimeout(spaceTimer);
+
+        // Если долго ничего не нажимают — добавить пробел
+        spaceTimer = setTimeout(() => {
+            resultText += " ";
+            text.textContent = resultText;
+        }, Number(timeBetweenWords.value));
+
+    }, Number(timeOfLongSig.value) * 2);
+}
+
+
+btn.onmousedown = press;
+btn.onmouseup = release;
+
+
+document.onkeydown = (e) => {
+    if (e.code === "Space" && !e.repeat) {
+        e.preventDefault();
+        press();
+    }
+};
+
+document.onkeyup = (e) => {
+    if (e.code === "Space") {
+        e.preventDefault();
+        release();
+    }
+};
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <title>Morse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Morse decoder</h1>
+    <div>
+        Time long signal ms:
+        <input id="timeOfLongSig" type="number" value="150" style="width:80px"><br><br>
+    </div>
+    <div>
+        Time between words ms:
+        <input id="timeBetweenWords" type="number" value="1000" style="width:80px"><br><br>
+    </div>
+    <div>
+        English
+        <input id="en" type="checkbox">
+    </div>
+    <div>
+        Russian
+        <input id="ru" type="checkbox">
+    </div>
+    <div>
+        Hide current symbol
+        <input id="hideCurSym" type="checkbox">
+    </div>
+    <button id="telegraph">telegraph</button>
+    <div id="curSym"> </div>
+    <div id="text"></div>
+
+    <script src="script.js"></script>
+</body>
