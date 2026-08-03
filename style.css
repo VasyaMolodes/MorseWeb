@@ -32,6 +32,18 @@ body {
 }
 
 #telegraph {
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     margin-top: 20px;
     height: 100px;
@@ -40,6 +52,16 @@ body {
     background-color: white;
     border-radius: 10px;
 }
+
+/* #telegraph {
+    touch-action: manipulation;
+    margin-top: 20px;
+    height: 100px;
+    width: 300px;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+} */
 
 /* #longSignalDiv {
     display: flex;
