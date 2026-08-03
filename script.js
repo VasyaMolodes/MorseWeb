@@ -178,13 +178,3 @@ document.onkeyup = (e) => {
 };
 
 
-function clearSelection() {
-    const selection = window.getSelection();
-    if (selection) {
-        selection.removeAllRanges();
-    }
-}
-
-btn.addEventListener("pointerup", clearSelection);
-btn.addEventListener("mouseup", clearSelection);
-btn.addEventListener("touchend", clearSelection);

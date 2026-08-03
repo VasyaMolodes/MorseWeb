@@ -3,10 +3,6 @@ h1 {
 }
 
 body {
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
     color: white;
     font-family: arial;
     background-color: black;
@@ -31,7 +27,7 @@ body {
     font-size: large;
 }
 
-#telegraph {
+/* #telegraph {
     border-radius: 10px;
 
     display: flex;
@@ -51,9 +47,9 @@ body {
     color: black;
     background-color: white;
     border-radius: 10px;
-}
+} */
 
-/* #telegraph {
+#telegraph {
     touch-action: manipulation;
     margin-top: 20px;
     height: 100px;
@@ -61,7 +57,7 @@ body {
     color: black;
     background-color: white;
     border-radius: 10px;
-} */
+}
 
 /* #longSignalDiv {
     display: flex;
