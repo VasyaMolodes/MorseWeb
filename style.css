@@ -28,6 +28,7 @@ body {
 }
 
 #telegraph {
+    touch-action: manipulation;
     margin-top: 20px;
     height: 100px;
     width: 300px;

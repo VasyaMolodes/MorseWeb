@@ -26,6 +26,25 @@ ruCheck.onchange = () => {
     }
 };
 
+btn.addEventListener("pointerdown", press);
+btn.addEventListener("pointerup", release);
+btn.addEventListener("pointercancel", release);
+
+btn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    press();
+}, { passive: false });
+
+btn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    release();
+}, { passive: false });
+
+btn.addEventListener("touchcancel", (e) => {
+    e.preventDefault();
+    release();
+}, { passive: false });
+
 const RU={
 ".-":"А","-...":"Б",".--":"В","--.":"Г","-..":"Д",".":"Е","...-":"Ж","--..":"З","..":"И",
 ".---":"Й","-.-":"К",".-..":"Л","--":"М","-.":"Н","---":"О",".--.":"П",".-.":"Р","...":"С",
