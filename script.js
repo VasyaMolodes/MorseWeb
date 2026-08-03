@@ -26,9 +26,6 @@ ruCheck.onchange = () => {
     }
 };
 
-btn.addEventListener("pointerdown", press);
-btn.addEventListener("pointerup", release);
-btn.addEventListener("pointercancel", release);
 
 btn.addEventListener("touchstart", (e) => {
     e.preventDefault();
