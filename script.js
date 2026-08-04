@@ -6,7 +6,25 @@ const text = document.getElementById("text");
 const curSym = document.getElementById("curSym");
 const timeOfLongSig = document.getElementById("timeOfLongSig");
 const timeBetweenWords = document.getElementById("timeBetweenWords");
+// Создаём аудиоконтекст
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const playBtn = document.getElementById("playBtn");
+// Создаём генератор (осциллятор)
+const oscillator = audioContext.createOscillator();
+oscillator.type = 'square'; // Форма волны
 
+// Задаём частоту (в герцах)
+oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+
+// Подключаем к выходу и запускаем
+playBtn.onclick = playSound() {
+oscillator.connect(audioContext.destination);
+oscillator.start();
+
+
+// Останавливаем через 0.5 секунды
+setTimeout(() => oscillator.stop(), 500);
+};
 
 let lang = "en";
 
